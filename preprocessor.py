@@ -59,7 +59,8 @@ def load_and_preprocess_data(data_dir):
     return data
 
 if __name__ == "__main__":
-    data_dir = r"c:\Users\Designer_2\Documents\jeon\dashboard\data"
+    # 테스트 시에도 상대 경로 사용
+    data_dir = os.path.join(os.getcwd(), "data")
     processed_data = load_and_preprocess_data(data_dir)
     print("Preprocessing complete.")
     for key, df in processed_data.items():
