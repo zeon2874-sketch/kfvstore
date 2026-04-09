@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 import plotly.express as px
 import plotly.graph_objects as go
 from preprocessor import load_and_preprocess_data
@@ -38,7 +39,8 @@ st.markdown("""
 # 데이터 로드 (캐싱 적용)
 @st.cache_data
 def get_data():
-    data_dir = r"c:\Users\Designer_2\Documents\jeon\dashboard\data"
+    # 로컬 경로 대신 현재 작업 디렉토리 기준의 상대 경로 사용 (배포 시 필수)
+    data_dir = os.path.join(os.getcwd(), "data")
     return load_and_preprocess_data(data_dir)
 
 data = get_data()
